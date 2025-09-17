@@ -1,3 +1,5 @@
+{% extends 'base.html' %}
+{% block content %}
 <h1>Football News</h1>
 
 <h5>NPM: </h5>
@@ -9,12 +11,21 @@
 <h5>Class:</h5>
 <p>{{ class }}</p>
 
+
 <a href="{% url 'main:create_news' %}">
   <button>+ Add News</button>
 </a>
-
+<a href="{% url 'main:logout' %}">
+  <button>Logout</button>
+</a>
+<h5>Sesi terakhir login: {{ last_login }}</h5>
 <hr>
-
+<a href="?filter=all">
+    <button type="button">All Articles</button>
+</a>
+<a href="?filter=my">
+    <button type="button">My Articles</button>
+</a> 
 {% if not news_list %}
 <p>Belum ada data berita pada football news.</p>
 {% else %}
@@ -42,3 +53,4 @@
 {% endfor %}
 
 {% endif %}
+{% endblock content %}
